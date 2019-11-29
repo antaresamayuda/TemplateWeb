@@ -1,0 +1,137 @@
+﻿@model IEnumerable<TemplateWeb.Common.Entity.mMenu>
+@using TemplateWeb.Common
+
+@{
+    ViewBag.Title = "List Menu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Index", "Menu", FormMethod.Post, new { id = "frmMenu" }))
+{
+    <section class="content-header">
+        <h1>
+            @ViewBag.Title
+        </h1>
+    </section>
+
+    <section class="content">
+        <div class="row">
+            <div class="box box-default">
+                <div class="box-header with-border text-right" style="height:55px">
+                    <a href="@Url.Action("Create")" id="btnNew" class="btn btn-warning" style="display:@UserAccessAuthorization.UserAccess("/TemplateWeb/Menu/Create")">Add New</a>
+                </div>
+                <form role="form">
+                    <div class="box-body">
+                        <div class="col-md-12">
+                            <div class="block">
+                                <div class="block-content np">
+                                    <table id="tblMenu" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    No.
+                                                </th>
+                                                <th>
+                                                    Menu Name
+                                                </th>
+                                                <th>
+                                                    Description
+                                                </th>
+                                                <th>
+                                                    Order
+                                                </th>
+                                                <th>
+                                                    Link
+                                                </th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                string Details = UserAccessAuthorization.UserAccess("/TemplateWeb/Menu/Details");
+                                                string Edit = UserAccessAuthorization.UserAccess("/TemplateWeb/Menu/Edit");
+                                                string Delete = UserAccessAuthorization.UserAccess("/TemplateWeb/Menu/Delete");
+                                            }
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>
+
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.txtMenuName)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.txtDescription)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.intOrderID)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.txtLink)
+                                                    </td>
+                                                    <td>
+                                                        <a href="@Url.Action("Details", new { id = clsRijndael.EncryptToHTTPEncode(item.intMenuID.ToString()) })" class="btn btn-danger btn-xs" style="display:@Details">View</a>
+                                                        <a href="@Url.Action("Edit", new { id = clsRijndael.EncryptToHTTPEncode(item.intMenuID.ToString()) })" class="btn btn-danger btn-xs" style="display:@Edit">Edit</a>
+                                                        <a href="@Url.Action("Delete", new { id = clsRijndael.EncryptToHTTPEncode(item.intMenuID.ToString()) })" class="btn btn-danger btn-xs" style="display:@Delete">Delete</a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-footer">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    @section scripts
+    {
+        <script src="~/Scripts/customs/globalScript.js"></script>
+
+        <script type="text/javascript">
+            var clsGlobal = new clsGlobalClass();
+
+            $(document).ready(function () {
+                $("#tblMenu").DataTable({
+                    "order": [[1, 'asc']],
+                    "bAutoWidth": false,
+                    "columnDefs": [
+                        {
+                            className: "text-center",
+                            "width": "40px",
+                            "searchable": false,
+                            "orderable": false,
+                            aTargets: [0],
+                        },
+                        {
+                            className: "text-center",
+                            "width": "200px",
+                            aTargets: [5],
+                            orderable: false,
+                        },
+                    ]
+                });
+
+                $("#tblMenu").DataTable().on('order.dt search.dt', function () {
+                    $("#tblMenu").DataTable().column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+                        cell.innerHTML = i + 1;
+                    });
+                }).draw();
+
+            });
+
+
+        </script>
+    }
+                                                }
+
+

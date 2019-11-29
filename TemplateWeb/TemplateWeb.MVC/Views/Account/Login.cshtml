@@ -1,0 +1,72 @@
+﻿@model TemplateWeb.MVC.Models.LoginModel
+@using System.Collections.Generic;
+@using BotDetect.Web.Mvc;
+
+@{
+    ViewBag.Title = "Log in";
+}
+@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    MvcCaptcha sampleCaptcha = new MvcCaptcha("SampleCaptcha");
+    sampleCaptcha.Reset();
+}
+ 
+@using (Html.BeginForm("Login", "Account", new { @returnUrl = Request.QueryString["returnUrl"]}, FormMethod.Post, new { id = "FormLogin", autocomplete = "off" }))
+{
+    <fieldset>
+        @Html.AntiForgeryToken()
+        
+        <div class="login-logo">
+
+            <a href=""><b>Login Page</b></a>
+        </div>
+
+        @if (@ViewBag.Message != null)
+        {
+            <div style="border: 1px solid red">
+                @ViewBag.Message
+            </div>
+        } 
+        <h5 class="center"></h5>
+        <div class="form-group has-feedback">
+            @Html.TextBoxFor(a => a.txtUserName, new { @class = "form-control", @autocomplete = "off", placeholder = "Username", onfocus = "true", tabindex = "1" })
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+        @Html.ValidationMessageFor(a => a.txtUserName, "", new { @class = "text-danger" })
+        <div class="form-group has-feedback">
+            @Html.PasswordFor(a => a.txtPassword, new { @class = "form-control", @autocomplete = "off", placeholder = "Password", tabindex = "2" })
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>        
+        @Html.ValidationMessageFor(a => a.txtPassword, "", new { @class = "text-danger" })
+
+        <div class="form-group has-feedback">
+            @{
+                sampleCaptcha.CodeLength = 5;
+            }
+            @Html.Captcha(sampleCaptcha)
+        </div>
+        <div class="form-group has-feedback">
+            @Html.TextBoxFor(a => a.txtCaptcha, new { @class = "form-control text-uppercase", placeholder = "Captcha", tabindex = "3" })
+            @Html.ValidationMessageFor(a => a.txtCaptcha, "", new { @class = "text-danger" })
+        </div> 
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="row">
+            <div class="col-xs-4">
+                <button id="btn-login" type="submit" class="btn btn-primary btn-block btn-flat">Login</button>
+            </div>
+            <div class="col-xs-8 text-right">
+                <a href="@Url.Action("ForgetPassword","Account")">Forget password?</a>
+            </div>
+        </div>
+
+    </fieldset>
+}
+ 
+
+@section scripts{
+
+    <script src="~/Scripts/customs/globalScript.js"></script>
+    <script src="~/Scripts/customs/admins/loginScript.js"></script>
+}

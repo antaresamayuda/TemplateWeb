@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="~/Content/img/favicon.png" type="image/x-icon">
+    <title>@clsGlobal.AppName </title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    
+    @Styles.Render("~/Content/bootstrap")
+
+    <link href="~/Content/fontawesome.min.css" rel="stylesheet" />
+    <link href="~/Content/ionicons.min.css" rel="stylesheet" />
+    @Styles.Render("~/Content/plugins/css")
+    <link rel="stylesheet" href="~/Content/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="~/Content/dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="~/Content/plugins/datepicker/datepicker3.css">
+    <link href="~/Content/clockpicker/bootstrap-clockpicker.min.css" rel="stylesheet" />
+    <link href="~/Content/clockpicker/bootstrap-clockpicker.css" rel="stylesheet" />
+    <link href="~/Content/clockpicker/jquery-clockpicker.css" rel="stylesheet" />
+
+    @Styles.Render("~/Content/DataTable")
+    @Styles.Render("~/Content/fancybox")
+</head>
+@*<body class="hold-transition skin-red sidebar-mini sidebar-collapse">*@
+
+<body class="hold-transition skin-red sidebar-mini">
+    <div class="wrapper">
+        <header class="main-header">
+            @Html.Partial("_header")
+        </header>
+
+        <aside class="main-sidebar">
+            @Html.Partial("_sidebar")
+        </aside>
+
+        <div class="content-wrapper">
+            <div id="divWarningSystem" class="alert alert-warning alert-dismissible" style="display:none;">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-ban"></i> <span id="txtWarningSystem">!</span></h4>                
+            </div>
+            <div id="divInformationSystem" class="alert alert-success alert-dismissible" style="display:none;">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="icon fa fa-check"></i> <span id="txtInformationSystem">.</span></h4>
+            </div>
+            
+            <section class="content">
+                @RenderBody()
+            </section>
+        </div>
+
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 1.0.0
+            </div>
+            <strong>Template Web</strong> -  Bank Sinarmas
+        </footer> 
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/Scripts/bootstrap")
+    @Scripts.Render("~/Content/plugins")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/moment.min.js"></script> 
+      
+    <script src="~/Content/dist/js/app.min.js"></script>
+    <script src="~/Content/dist/js/demo.js"></script>
+    <script src="~/Scripts/clockpicker/bootstrap-clockpicker.min.js"></script>
+    <script src="~/Scripts/daterangepicker/daterangepicker.js"></script>
+    @Scripts.Render("~/Script/DataTable")
+    @Scripts.Render("~/Scripts/fancybox")
+    
+
+    <script src="~/Scripts/jqueryDateFormat/jquery-dateFormat.min.js"></script>
+    <script src="~/Scripts/bootboxs/bootbox.min.js"></script>
+    <script src="~/Scripts/custom.js"></script>
+    <script src="~/Scripts/autonumeric/autoNumeric.js"></script>
+     
+    @RenderSection("scripts", required:false)
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var status = '@TempData["Status"]';
+            var message = '@TempData["Message"]';
+
+            if (status != '' && message != '') {
+                if (status == 'SUCCES') {
+                    $("#lblMessageWarning").text(message);
+                    $("#txtInformationSystem").html(message);
+                    $("#divInformationSystem").show();
+                }
+
+                if (status == 'FAIL') {
+                    $("#lblMessageWarning").text(message);
+                    $("#txtWarningSystem").html(message);
+                    $("#divWarningSystem").show();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

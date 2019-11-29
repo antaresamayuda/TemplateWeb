@@ -1,0 +1,5 @@
+﻿@using TemplateWeb.MVC
+
+<section class="sidebar">
+    @Html.Raw(mMenuCustomBL.GenerateMenuHierarchy(GlobalClass.dLogin.intRoleID, ""));
+</section>

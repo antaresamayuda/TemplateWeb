@@ -1,0 +1,116 @@
+﻿@model TemplateWeb.Common.Entity.mMenu
+
+@{
+    ViewBag.Title = "View Menu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Details", "Menu", FormMethod.Post, new { id = "frmMenu" }))
+{
+    @Html.AntiForgeryToken()
+
+    <section class="content-header">
+        <h1>
+            @ViewBag.Title
+        </h1>
+    </section>
+
+    <section class="content">
+        <div class="row">
+            <div class="box box-default">
+                <div class="box-header with-border text-right">
+                    <a href="@Url.Action("/Index")" class="btn btn-default"><i class="fa fa-arrow-left"></i> Back</a>
+                </div>
+                <form role="form">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label id="lblParent" class="col-sm-2 control-label">Parent</label>
+                            <div class="col-md-10" style="padding-bottom:10px">
+                                @Html.DropDownListFor(model => model.intParentID, new SelectList(ViewBag.ParentList as IEnumerable<SelectListItem>, "Value", "Text", Model.intParentID), new { @class = "form-control", @disabled = "disabled" })
+                                @Html.ValidationMessageFor(model => model.intParentID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label id="lblMenuName" class="col-sm-2 control-label">Menu Name <i style="color:red;">*</i></label>
+                            <div class="col-md-10" style="padding-bottom:10px">
+                                @Html.EditorFor(model => model.txtMenuName, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                @Html.ValidationMessageFor(model => model.txtMenuName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label id="lblDescription" class="col-sm-2 control-label">Description <i style="color:red;">*</i></label>
+                            <div class="col-md-10" style="padding-bottom:10px">
+                                @Html.EditorFor(model => model.txtDescription, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                @Html.ValidationMessageFor(model => model.txtDescription, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label id="lblModule" class="col-sm-2 control-label">Module <i style="color:red;">*</i></label>
+                            <div class="col-md-10" style="padding-bottom:10px">
+                                @Html.DropDownListFor(model => model.intModuleID, new SelectList(ViewBag.ModuleList as IEnumerable<SelectListItem>, "Value", "Text", Model.intModuleID), new { @class = "form-control", @disabled = "disabled" })
+                                @Html.ValidationMessageFor(model => model.intModuleID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label id="lblOrder" class="col-sm-2 control-label">Order <i style="color:red;">*</i></label>
+                            <div class="col-md-10" style="padding-bottom:10px">
+                                @Html.EditorFor(model => model.intOrderID, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                @Html.ValidationMessageFor(model => model.intOrderID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label id="lblLink" class="col-sm-2 control-label">Link</label>
+                            <div class="col-md-10" style="padding-bottom:10px">
+                                @Html.EditorFor(model => model.txtLink, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                @Html.ValidationMessageFor(model => model.txtLink, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label id="lblActive" class="col-sm-2 control-label">Active</label>
+                            <div class="col-md-10" style="padding-bottom:10px">
+                                @Html.CheckBoxFor(model => model.bitActive, new { htmlAttributes = new { @class = "form-control"}, @disabled = "disabled" })
+                                @Html.ValidationMessageFor(model => model.bitActive, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label id="lblMethod" class="col-sm-2 control-label">Method</label>
+                            <div class="col-md-10" style="padding-bottom:10px">
+                                @Html.CheckBoxFor(model => model.bitMethod, new { htmlAttributes = new { @class = "form-control" }, @disabled = "disabled" })
+                                @Html.ValidationMessageFor(model => model.bitMethod, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-footer">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    @section scripts
+    {
+        <script src="~/Scripts/customs/globalScript.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+            });
+        </script>
+    }
+}
+
+
+
+
+
+

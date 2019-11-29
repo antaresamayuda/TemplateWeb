@@ -1,0 +1,68 @@
+﻿@model TemplateWeb.Common.Entity.mModule
+
+@{
+    ViewBag.Title = "Create Module";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Create", "Module", FormMethod.Post, new { id = "frmModule" }))
+{
+    @Html.AntiForgeryToken()
+
+    <section class="content-header">
+        <h1>
+            @ViewBag.Title
+        </h1>
+    </section>
+
+    <section class="content">
+        <div class="row">
+            <div class="box box-default">
+                <div class="box-header with-border text-right">
+                    <a href="@Url.Action("/Index")" class="btn btn-default"><i class="fa fa-arrow-left"></i> Back</a>
+                    <button type="submit" name="btn" value="Save" class="btn btn-success"><i class="fa fa-floppy-o"></i> Save</button>
+                </div>
+                <form role="form">
+                    <div class="box-body">
+                        @Html.HiddenFor(model => model.txtGUID)
+                        <div class="form-group">
+                            <label id="lblModuleName" class="col-sm-2 control-label">Module Name <i style="color:red;">*</i></label>
+                            <div class="col-md-10" style="padding-bottom:10px">
+                                @Html.EditorFor(model => model.txtModuleName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.txtModuleName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label id="lblDescription" class="col-sm-2 control-label">Description <i style="color:red;">*</i></label>
+                            <div class="col-md-10" style="padding-bottom:10px">
+                                @Html.EditorFor(model => model.txtDescription, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.txtDescription, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-footer">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    @section scripts
+    {
+        <script src="~/Scripts/customs/globalScript.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+            });
+        </script>
+    }
+}
+
+
+
+

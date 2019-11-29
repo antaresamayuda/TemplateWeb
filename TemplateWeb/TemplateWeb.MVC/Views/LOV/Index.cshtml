@@ -1,0 +1,123 @@
+﻿ 
+@using TemplateWeb.Common;
+@using TemplateWeb.Common.Entity;
+@using TemplateWeb.MVC; 
+
+@{
+    ViewData["Title"] = "List Of Value";
+    Layout = null;
+    }
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+      
+    @Styles.Render("~/Content/bootstrap")
+
+    <!-- Font Awesome -->
+    <link href="~/Content/fontawesome.min.css" rel="stylesheet" />
+    <!-- Ionicons -->
+    <link href="~/Content/ionicons.min.css" rel="stylesheet" />
+    @Styles.Render("~/Content/plugins/css")
+      
+    @*<link rel="stylesheet" type="text/css" href="~/Content/datatable/site.css">*@  
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Content/dist/css/AdminLTE.min.css">
+    @*<link rel="stylesheet" href="~/Content/dist/css/skins/_all-skins.min.css">*@
+
+    <!-- Data Table-->
+    @Styles.Render("~/Content/DataTable")
+
+    <!--FancyBox-->
+    @Styles.Render("~/Content/fancybox")
+
+    @*CUSTOM*@ 
+    @*<link rel="stylesheet" type="text/css" href="~/Content/datatables.1.10.12/css/jquery.dataTables.css">*@
+
+    @*<link rel="stylesheet" href="~/Content/styles.css">*@
+</head>
+<body class="form-group" style="height:auto;">
+    <div class="form-group">
+        <div class="box-header" style="background-color:#d73925">
+            <h3 class="modal-title"><label style="color:white">List Of Value</label></h3>
+        </div>
+        
+        <div id="wrapper" class="box-body">
+            @*@using (Html.BeginForm("Index", "LOV", new { @returnUrl = Request.QueryString["id"] }, FormMethod.Post, new { id = "frm1", autocomplete = "off" }))
+                {*@
+            @Html.AntiForgeryToken()
+            @Html.Hidden("txtHiddenObject")
+            @Html.Hidden("txtFunction")
+
+            <table id="tbLOV" style="width:auto;" class="table table-condensed table-hover">
+                <thead>
+                    <tr>
+                        <td><div id="lblPilih" style="font-weight:bold">Pilih</div></td>
+                        <td><div id="lblColumnName1" style="font-weight:bold">Column 1</div></td>
+                        <td><div id="lblColumnName2" style="font-weight:bold">Column 2</div></td>
+                        <td><div id="lblColumnName3" style="font-weight:bold">Column 3</div></td>
+                        <td><div id="lblColumnName4" style="font-weight:bold">Column 4</div></td>
+                        <td><div id="lblColumnName5" style="font-weight:bold">Column 5</div></td>
+                        <td><div id="lblColumnName6" style="font-weight:bold">Column 6</div></td>
+                        <td><div id="lblColumnName7" style="font-weight:bold">Column 7</div></td>
+                        <td><div id="lblColumnName8" style="font-weight:bold">Column 8</div></td>
+                        <td><div id="lblColumnName9" style="font-weight:bold">Column 9</div></td>
+                        <td><div id="lblColumnName10" style="font-weight:bold">Column 10</div></td>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            @*}*@
+        </div>
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @*<script src="~/Content/bootstrap/js/bootstrap.min.js"></script>*@
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/Scripts/bootstrap")
+    @Scripts.Render("~/Content/plugins")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+
+    <!-- AdminLTE App -->
+    <script src="~/Content/dist/js/app.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/Content/dist/js/demo.js"></script>
+
+    <!-- Autonumeric -->
+    <script src="~/Scripts/autonumeric/autoNumeric.js"></script>
+
+    <!--Data Table-->
+    @Scripts.Render("~/Script/DataTable")
+    <!--FancyBox-->
+    @Scripts.Render("~/Scripts/fancybox")
+
+    <!--Jquery Validate-->
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="~/Scripts/custom.js"></script>
+
+    @*<script type="text/javascript" language="javascript" src="~/Content/datatables.1.10.12/js/jquery.dataTables.js"> </script>*@
+
+    <!-- Custom CODING Script -->
+    <script src="~/Scripts/customs/globalScript.js"></script>
+    <script src="~/Scripts/customs/admins/LOVScript.js"></script>
+
+
+</body> 
+</html>
+
+
+ 
+
+
+
+
+
+
+

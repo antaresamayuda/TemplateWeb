@@ -1,0 +1,126 @@
+﻿@model IEnumerable<TemplateWeb.Common.Entity.mUser>
+@using TemplateWeb.Common
+
+@{
+    ViewBag.Title = "List User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Index", "User", FormMethod.Post, new { id = "frmUser" }))
+{
+    <section class="content-header">
+        <h1>
+            @ViewBag.Title
+        </h1>
+    </section>
+
+    <section class="content">
+        <div class="row">
+            <div class="box box-default">
+                <div class="box-header with-border text-right" style="height:55px">
+                    <a href="@Url.Action("Create")" id="btnNew" class="btn btn-warning" style="display:@UserAccessAuthorization.UserAccess("/TemplateWeb/User/Create")">Add New</a>
+                </div>
+                <form role="form">
+                    <div class="box-body">
+                        <div class="col-md-12">
+                            <div class="block">
+                                <div class="block-content np">
+                                    <table id="tblUser" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    No.
+                                                </th>
+                                                <th>
+                                                    Full Name
+                                                </th>
+                                                <th>
+                                                    Company
+                                                </th>
+                                                <th>
+                                                    User Access
+                                                </th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{ int index = 1;
+                                                string Details = UserAccessAuthorization.UserAccess("/TemplateWeb/User/Details");
+                                                string Edit = UserAccessAuthorization.UserAccess("/TemplateWeb/User/Edit");
+                                                string Delete = UserAccessAuthorization.UserAccess("/TemplateWeb/User/Delete"); 
+                                                }
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @index
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.txtName)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.txtCompanyName)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.mUserRoles.ToList()[0].mRole.txtRoleName)
+                                                    </td>
+                                                    <td>
+                                                        <a href="@Url.Action("Details", new { id = clsRijndael.EncryptToHTTPEncode(item.intUserID.ToString()) })" class="btn btn-danger btn-xs" style="display:@Details">View</a>
+                                                        <a href="@Url.Action("Edit", new { id = clsRijndael.EncryptToHTTPEncode(item.intUserID.ToString()) })" class="btn btn-danger btn-xs" style="display:@Edit">Edit</a>
+                                                        <a href="@Url.Action("Delete", new { id = clsRijndael.EncryptToHTTPEncode(item.intUserID.ToString()) })" class="btn btn-danger btn-xs" style="display:@Delete">Delete</a>
+                                                    </td>
+                                                </tr>
+
+                                                index = index + 1;
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-footer">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    @section scripts
+    {
+        <script src="~/Scripts/customs/globalScript.js"></script>
+
+        <script type="text/javascript">
+            var clsGlobal = new clsGlobalClass();
+
+            $(document).ready(function () {
+                $("#tblUser").DataTable({
+                    "order": [],
+                    "bAutoWidth": false,
+                    "columnDefs": [
+                        {
+                            className: "text-center",
+                            "width": "40px",
+                            aTargets: [0],
+                            orderable: false,
+                        },
+                        {
+                            className: "text-center",
+                            "width": "200px",
+                            aTargets: [4],
+                            orderable: false,
+                        },
+                    ]
+                });
+
+            });
+
+
+        </script>
+    }
+                                                }
+
+

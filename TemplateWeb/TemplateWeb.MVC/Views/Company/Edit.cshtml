@@ -1,0 +1,92 @@
+﻿@model TemplateWeb.Common.Entity.mCompany
+
+@{
+    ViewBag.Title = "Edit Company";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Edit", "Company", FormMethod.Post, new { id = "frmCompany" }))
+{
+    @Html.AntiForgeryToken()
+
+    <section class="content-header">
+        <h1>
+            @ViewBag.Title
+        </h1>
+    </section>
+
+    <section class="content">
+        <div class="row">
+            <div class="box box-default">
+                <div class="box-header with-border text-right">
+                    <a href="@Url.Action("/Index")" class="btn btn-default"><i class="fa fa-arrow-left"></i> Back</a>
+                    <button type="submit" name="btn" value="SAVE" class="btn btn-success"><i class="fa fa-floppy-o"></i> Edit</button>
+                </div>
+                <form role="form">
+                    <div class="box-body">
+                        @Html.HiddenFor(model => model.intCompanyID)
+                        @Html.HiddenFor(model => model.txtGUID)
+                        @Html.HiddenFor(model => model.txtCreatedBy)
+                        @Html.HiddenFor(model => model.dtmCreatedDate)
+                        @Html.HiddenFor(model => model.txtUpdatedBy)
+                        @Html.HiddenFor(model => model.dtmUpdatedDate)
+
+                        <div class="form-group">
+                            <label id="lblCompanyName" class="col-sm-2 control-label">Company Name</label>
+                            <div class="col-md-10" style="padding-bottom:10px">
+                                @Html.EditorFor(model => model.txtCompanyName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.txtCompanyName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label id="lblBidangUsaha" class="col-sm-2 control-label">Bidang Usaha</label>
+                            <div class="col-md-10" style="padding-bottom:10px">
+                                @Html.DropDownListFor(model => model.txtBidangUsaha, new SelectList(ViewBag.BidangUsahaList as IEnumerable<SelectListItem>, "Value", "Text", Model.txtBidangUsaha), new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.txtBidangUsaha, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label id="lblAddress" class="col-sm-2 control-label">Address </label>
+                            <div class="col-md-10" style="padding-bottom:10px">
+                                @Html.EditorFor(model => model.txtAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.txtAddress, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label id="lblTelephone" class="col-sm-2 control-label">Telephone</label>
+                            <div class="col-md-10" style="padding-bottom:10px">
+                                @Html.EditorFor(model => model.txtTelephone, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.txtTelephone, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-footer">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    @section scripts
+    {
+        <script src="~/Scripts/customs/globalScript.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+            });
+        </script>
+    }
+}
+
+
+
+
+
+

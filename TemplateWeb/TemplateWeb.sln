@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Item", "Solution Item", "{754F06D1-3B1C-4F81-84F7-9DD021BAA42C}"
+	ProjectSection(SolutionItems) = preProject
+		source\AutoMapper.dll = source\AutoMapper.dll
+		source\DTG.Spreadsheet.dll = source\DTG.Spreadsheet.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateWeb.MVC", "TemplateWeb.MVC\TemplateWeb.MVC.csproj", "{D2938A90-D2FE-4D4C-8F11-C0E7A986B4D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateWeb.BussLogic", "TemplateWeb.BussLogic\TemplateWeb.BussLogic.csproj", "{43F9F85D-375F-42CC-AE54-D7B2246A1661}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateWeb.Common", "TemplateWeb.Common\TemplateWeb.Common.csproj", "{EC40A128-291D-4FFF-A249-32543BAA46EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateWeb.DAL", "Templateweb.DAL\TemplateWeb.DAL.csproj", "{2183076E-A153-443E-B1F8-3D9B0B239BA1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D2938A90-D2FE-4D4C-8F11-C0E7A986B4D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2938A90-D2FE-4D4C-8F11-C0E7A986B4D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2938A90-D2FE-4D4C-8F11-C0E7A986B4D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2938A90-D2FE-4D4C-8F11-C0E7A986B4D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43F9F85D-375F-42CC-AE54-D7B2246A1661}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43F9F85D-375F-42CC-AE54-D7B2246A1661}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43F9F85D-375F-42CC-AE54-D7B2246A1661}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43F9F85D-375F-42CC-AE54-D7B2246A1661}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC40A128-291D-4FFF-A249-32543BAA46EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC40A128-291D-4FFF-A249-32543BAA46EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC40A128-291D-4FFF-A249-32543BAA46EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC40A128-291D-4FFF-A249-32543BAA46EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2183076E-A153-443E-B1F8-3D9B0B239BA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2183076E-A153-443E-B1F8-3D9B0B239BA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2183076E-A153-443E-B1F8-3D9B0B239BA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2183076E-A153-443E-B1F8-3D9B0B239BA1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

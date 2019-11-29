@@ -1,0 +1,114 @@
+﻿@model IEnumerable<TemplateWeb.Common.Entity.mRole>
+@using TemplateWeb.Common
+
+@{
+    ViewBag.Title = "List Role";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Index", "Role", FormMethod.Post, new { id = "frmRole" }))
+{
+    <section class="content-header">
+        <h1>
+            @ViewBag.Title
+        </h1>
+    </section>
+
+    <section class="content">
+        <div class="row">
+            <div class="box box-default">
+                <div class="box-header with-border text-right" style="height:55px">
+                    <a href="@Url.Action("Create")" id="btnNew" class="btn btn-warning" style="display:@UserAccessAuthorization.UserAccess("/TemplateWeb/Role/Create")">Add New</a>
+                </div>
+                <form role="form">
+                    <div class="box-body">
+                        <div class="col-md-12">
+                            <div class="block">
+                                <div class="block-content np">
+                                    <table id="tblRole" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    No.
+                                                </th>
+                                                <th>
+                                                    Role Name
+                                                </th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{ int index = 1;
+                                                string Details = UserAccessAuthorization.UserAccess("/TemplateWeb/Role/Details");
+                                                string Edit = UserAccessAuthorization.UserAccess("/TemplateWeb/Role/Edit");
+                                                string Delete = UserAccessAuthorization.UserAccess("/TemplateWeb/Role/Delete"); 
+                                                }
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @index
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.txtRoleName)
+                                                    </td>
+                                                    <td>
+                                                        <a href="@Url.Action("Details", new { id = clsRijndael.EncryptToHTTPEncode(item.intRoleID.ToString()) })" class="btn btn-danger btn-xs" style="display:@Details">View</a>
+                                                        <a href="@Url.Action("Edit", new { id = clsRijndael.EncryptToHTTPEncode(item.intRoleID.ToString()) })" class="btn btn-danger btn-xs" style="display:@Edit">Edit</a>
+                                                        <a href="@Url.Action("Delete", new { id = clsRijndael.EncryptToHTTPEncode(item.intRoleID.ToString()) })" class="btn btn-danger btn-xs" style="display:@Delete">Delete</a>
+                                                    </td>
+                                                </tr>
+
+                                                index = index + 1;
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-footer">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    @section scripts
+    {
+        <script src="~/Scripts/customs/globalScript.js"></script>
+
+        <script type="text/javascript">
+            var clsGlobal = new clsGlobalClass();
+
+            $(document).ready(function () {
+                $("#tblRole").DataTable({
+                    "order": [],
+                    "bAutoWidth": false,
+                    "columnDefs": [
+                        {
+                            className: "text-center",
+                            "width": "40px",
+                            aTargets: [0],
+                            orderable: false,
+                        },
+                        {
+                            className: "text-center",
+                            "width": "200px",
+                            aTargets: [2],
+                            orderable: false,
+                        },
+                    ]
+                });
+
+            });
+
+
+        </script>
+    }
+                                                }
+
+

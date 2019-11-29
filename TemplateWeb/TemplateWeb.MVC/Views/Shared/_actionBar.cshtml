@@ -1,0 +1,27 @@
+﻿<div class="page-toolbar-block pull-right">
+    <div class="widget-info widget-from">
+        <button type="submit" name="btn" value="NEW" class="glyphicon glyphicon-file btn btn-function"> New</button>
+        @{ if (ViewBag.IsUpdate == true)
+         {
+            <button type="submit" name="btn" value="UPDATE" class="glyphicon glyphicon-save btn btn-success"> Save</button>
+         }
+           else
+           {
+            <button type="submit" name="btn" value="INSERT" class="glyphicon glyphicon-save btn btn-success"> Save</button>
+           }
+}
+
+        @{ if (ViewBag.IsTransact == true)
+         {
+            <button type="submit" name="btn" value="SUBMIT" class="glyphicon glyphicon-ok btn btn-success"> Submit</button>
+         }
+        }
+        <button type="submit" name="btn" value="Delete" class="glyphicon glyphicon-remove btn btn-danger"> Delete</button>
+        <button type="submit" name="btn" value="BACK" class="glyphicon glyphicon-repeat btn btn-function"> Back</button>
+        @{ if (ViewBag.IsReport == true)
+         {
+            <button type="submit" name="btn" value="Print" class="glyphicon glyphicon-print btn btn-default">Print</button>
+         }
+        }
+    </div>
+</div>

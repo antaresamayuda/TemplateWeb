@@ -1,0 +1,673 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TemplateWebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="mBidangUsaha">
+          <Key>
+            <PropertyRef Name="intBidangUsahaID" />
+          </Key>
+          <Property Name="intBidangUsahaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="txtBidangUsaha" Type="varchar" MaxLength="50" />
+          <Property Name="txtGUID" Type="varchar" MaxLength="150" />
+          <Property Name="txtCreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="dtmCreatedDate" Type="datetime" />
+          <Property Name="txtUpdatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="dtmUpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="mCompany">
+          <Key>
+            <PropertyRef Name="intCompanyID" />
+          </Key>
+          <Property Name="intCompanyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="txtCompanyName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="txtBidangUsaha" Type="varchar" MaxLength="50" />
+          <Property Name="txtAddress" Type="varchar" MaxLength="150" />
+          <Property Name="txtTelephone" Type="varchar" MaxLength="50" />
+          <Property Name="txtGUID" Type="varchar" MaxLength="150" />
+          <Property Name="txtCreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="dtmCreatedDate" Type="datetime" />
+          <Property Name="txtUpdatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="dtmUpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="mMenu">
+          <Key>
+            <PropertyRef Name="intMenuID" />
+          </Key>
+          <Property Name="intMenuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="intParentID" Type="int" />
+          <Property Name="txtMenuName" Type="varchar" MaxLength="50" />
+          <Property Name="txtDescription" Type="varchar" MaxLength="100" />
+          <Property Name="intModuleID" Type="int" />
+          <Property Name="txtLink" Type="varchar" MaxLength="250" />
+          <Property Name="intOrderID" Type="int" />
+          <Property Name="bitActive" Type="bit" />
+          <Property Name="bitMethod" Type="bit" />
+          <Property Name="txtIcon" Type="varchar" MaxLength="50" />
+          <Property Name="txtGUID" Type="varchar" MaxLength="150" />
+          <Property Name="txtCreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="dtmCreatedDate" Type="datetime" />
+          <Property Name="txtUpdatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="dtmUpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="mModule">
+          <Key>
+            <PropertyRef Name="intModuleID" />
+          </Key>
+          <Property Name="intModuleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="txtModuleName" Type="varchar" MaxLength="100" />
+          <Property Name="txtDescription" Type="varchar" MaxLength="100" />
+          <Property Name="txtGUID" Type="varchar" MaxLength="150" />
+          <Property Name="txtCreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="dtmCreatedDate" Type="datetime" />
+          <Property Name="txtUpdatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="dtmUpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="mRisiko">
+          <Key>
+            <PropertyRef Name="intRisikoID" />
+          </Key>
+          <Property Name="intRisikoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="txtRisiko" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="txtCreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="dtmCreatedDate" Type="datetime" />
+          <Property Name="txtUpdatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="dtmUpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="mRole">
+          <Key>
+            <PropertyRef Name="intRoleID" />
+          </Key>
+          <Property Name="intRoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="txtRoleName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="txtGUID" Type="varchar" MaxLength="150" />
+          <Property Name="txtCreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="dtmCreatedDate" Type="datetime" />
+          <Property Name="txtUpdatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="dtmUpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="mRoleAccess">
+          <Key>
+            <PropertyRef Name="intRoleAccessID" />
+          </Key>
+          <Property Name="intRoleAccessID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="intRoleID" Type="int" Nullable="false" />
+          <Property Name="intModuleID" Type="int" Nullable="false" />
+          <Property Name="bitEdit" Type="bit" />
+          <Property Name="bitView" Type="bit" />
+          <Property Name="bitDelete" Type="bit" />
+          <Property Name="bitPrint" Type="bit" />
+          <Property Name="txtCreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="dtmCreatedDate" Type="datetime" />
+          <Property Name="txtUpdatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="dtmUpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="mUser">
+          <Key>
+            <PropertyRef Name="intUserID" />
+          </Key>
+          <Property Name="intUserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="txtUserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="txtName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="intCompanyID" Type="int" Nullable="false" />
+          <Property Name="txtAddress" Type="varchar" MaxLength="150" />
+          <Property Name="txtPhoneNumber" Type="varchar" MaxLength="50" />
+          <Property Name="txtEmail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="bitActive" Type="bit" />
+          <Property Name="txtPassword" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="txtGUID" Type="varchar" MaxLength="150" />
+          <Property Name="txtCreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="dtmCreatedDate" Type="datetime" />
+          <Property Name="txtUpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="dtmUpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="mUserLog">
+          <Key>
+            <PropertyRef Name="intUserLogID" />
+          </Key>
+          <Property Name="intUserLogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="intUserID" Type="int" Nullable="false" />
+          <Property Name="txtUrl" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="dtmLog" Type="datetime" />
+        </EntityType>
+        <EntityType Name="mUserRecord">
+          <Key>
+            <PropertyRef Name="intUserRecordID" />
+          </Key>
+          <Property Name="intUserRecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="intUserID" Type="int" Nullable="false" />
+          <Property Name="dtmLastLogin" Type="datetime" />
+          <Property Name="intWrongPassCount" Type="int" />
+          <Property Name="dtmLastWrongPass" Type="datetime" />
+          <Property Name="bitLock" Type="bit" />
+          <Property Name="txtPreviousPass1" Type="varchar" MaxLength="50" />
+          <Property Name="txtPreviousPass2" Type="varchar" MaxLength="50" />
+          <Property Name="txtPreviousPass3" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="mUserRole">
+          <Key>
+            <PropertyRef Name="intUserRoleID" />
+          </Key>
+          <Property Name="intUserRoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="intRoleID" Type="int" Nullable="false" />
+          <Property Name="intUserID" Type="int" Nullable="false" />
+          <Property Name="txtCreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="dtmCreatedDate" Type="datetime" />
+          <Property Name="txtUpdatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="dtmUpdatedDate" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_mRoleAccess_mModule">
+          <End Role="mModule" Type="Self.mModule" Multiplicity="1" />
+          <End Role="mRoleAccess" Type="Self.mRoleAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mModule">
+              <PropertyRef Name="intModuleID" />
+            </Principal>
+            <Dependent Role="mRoleAccess">
+              <PropertyRef Name="intModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mRoleAccess_mRole">
+          <End Role="mRole" Type="Self.mRole" Multiplicity="1" />
+          <End Role="mRoleAccess" Type="Self.mRoleAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mRole">
+              <PropertyRef Name="intRoleID" />
+            </Principal>
+            <Dependent Role="mRoleAccess">
+              <PropertyRef Name="intRoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mUserRole_mRole">
+          <End Role="mRole" Type="Self.mRole" Multiplicity="1" />
+          <End Role="mUserRole" Type="Self.mUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mRole">
+              <PropertyRef Name="intRoleID" />
+            </Principal>
+            <Dependent Role="mUserRole">
+              <PropertyRef Name="intRoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mUserRole_mUser">
+          <End Role="mUser" Type="Self.mUser" Multiplicity="1" />
+          <End Role="mUserRole" Type="Self.mUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mUser">
+              <PropertyRef Name="intUserID" />
+            </Principal>
+            <Dependent Role="mUserRole">
+              <PropertyRef Name="intUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TemplateWebModelStoreContainer">
+          <EntitySet Name="mBidangUsaha" EntityType="Self.mBidangUsaha" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mCompany" EntityType="Self.mCompany" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mMenu" EntityType="Self.mMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mModule" EntityType="Self.mModule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mRisiko" EntityType="Self.mRisiko" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mRole" EntityType="Self.mRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mRoleAccess" EntityType="Self.mRoleAccess" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mUser" EntityType="Self.mUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mUserLog" EntityType="Self.mUserLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mUserRecord" EntityType="Self.mUserRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mUserRole" EntityType="Self.mUserRole" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_mRoleAccess_mModule" Association="Self.FK_mRoleAccess_mModule">
+            <End Role="mModule" EntitySet="mModule" />
+            <End Role="mRoleAccess" EntitySet="mRoleAccess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mRoleAccess_mRole" Association="Self.FK_mRoleAccess_mRole">
+            <End Role="mRole" EntitySet="mRole" />
+            <End Role="mRoleAccess" EntitySet="mRoleAccess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mUserRole_mRole" Association="Self.FK_mUserRole_mRole">
+            <End Role="mRole" EntitySet="mRole" />
+            <End Role="mUserRole" EntitySet="mUserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mUserRole_mUser" Association="Self.FK_mUserRole_mUser">
+            <End Role="mUser" EntitySet="mUser" />
+            <End Role="mUserRole" EntitySet="mUserRole" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TemplateWebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="mBidangUsahas" EntityType="TemplateWebModel.mBidangUsaha" />
+          <EntitySet Name="mCompanies" EntityType="TemplateWebModel.mCompany" />
+          <EntitySet Name="mMenus" EntityType="TemplateWebModel.mMenu" />
+          <EntitySet Name="mModules" EntityType="TemplateWebModel.mModule" />
+          <EntitySet Name="mRisikoes" EntityType="TemplateWebModel.mRisiko" />
+          <EntitySet Name="mRoles" EntityType="TemplateWebModel.mRole" />
+          <EntitySet Name="mRoleAccesses" EntityType="TemplateWebModel.mRoleAccess" />
+          <EntitySet Name="mUsers" EntityType="TemplateWebModel.mUser" />
+          <EntitySet Name="mUserLogs" EntityType="TemplateWebModel.mUserLog" />
+          <EntitySet Name="mUserRecords" EntityType="TemplateWebModel.mUserRecord" />
+          <EntitySet Name="mUserRoles" EntityType="TemplateWebModel.mUserRole" />
+          <AssociationSet Name="FK_mRoleAccess_mModule" Association="TemplateWebModel.FK_mRoleAccess_mModule">
+            <End Role="mModule" EntitySet="mModules" />
+            <End Role="mRoleAccess" EntitySet="mRoleAccesses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mRoleAccess_mRole" Association="TemplateWebModel.FK_mRoleAccess_mRole">
+            <End Role="mRole" EntitySet="mRoles" />
+            <End Role="mRoleAccess" EntitySet="mRoleAccesses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mUserRole_mRole" Association="TemplateWebModel.FK_mUserRole_mRole">
+            <End Role="mRole" EntitySet="mRoles" />
+            <End Role="mUserRole" EntitySet="mUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mUserRole_mUser" Association="TemplateWebModel.FK_mUserRole_mUser">
+            <End Role="mUser" EntitySet="mUsers" />
+            <End Role="mUserRole" EntitySet="mUserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="mBidangUsaha">
+          <Key>
+            <PropertyRef Name="intBidangUsahaID" />
+          </Key>
+          <Property Name="intBidangUsahaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="txtBidangUsaha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="txtGUID" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="txtCreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dtmCreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="txtUpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dtmUpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="mCompany">
+          <Key>
+            <PropertyRef Name="intCompanyID" />
+          </Key>
+          <Property Name="intCompanyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="txtCompanyName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="txtBidangUsaha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="txtAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="txtTelephone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="txtGUID" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="txtCreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dtmCreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="txtUpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dtmUpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="mMenu">
+          <Key>
+            <PropertyRef Name="intMenuID" />
+          </Key>
+          <Property Name="intMenuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="intParentID" Type="Int32" />
+          <Property Name="txtMenuName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="txtDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="intModuleID" Type="Int32" />
+          <Property Name="txtLink" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="intOrderID" Type="Int32" />
+          <Property Name="bitActive" Type="Boolean" />
+          <Property Name="bitMethod" Type="Boolean" />
+          <Property Name="txtIcon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="txtGUID" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="txtCreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dtmCreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="txtUpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dtmUpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="mModule">
+          <Key>
+            <PropertyRef Name="intModuleID" />
+          </Key>
+          <Property Name="intModuleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="txtModuleName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="txtDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="txtGUID" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="txtCreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dtmCreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="txtUpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dtmUpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="mRoleAccesses" Relationship="TemplateWebModel.FK_mRoleAccess_mModule" FromRole="mModule" ToRole="mRoleAccess" />
+        </EntityType>
+        <EntityType Name="mRisiko">
+          <Key>
+            <PropertyRef Name="intRisikoID" />
+          </Key>
+          <Property Name="intRisikoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="txtRisiko" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="txtCreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dtmCreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="txtUpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dtmUpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="mRole">
+          <Key>
+            <PropertyRef Name="intRoleID" />
+          </Key>
+          <Property Name="intRoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="txtRoleName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="txtGUID" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="txtCreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dtmCreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="txtUpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dtmUpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="mRoleAccesses" Relationship="TemplateWebModel.FK_mRoleAccess_mRole" FromRole="mRole" ToRole="mRoleAccess" />
+          <NavigationProperty Name="mUserRoles" Relationship="TemplateWebModel.FK_mUserRole_mRole" FromRole="mRole" ToRole="mUserRole" />
+        </EntityType>
+        <EntityType Name="mRoleAccess">
+          <Key>
+            <PropertyRef Name="intRoleAccessID" />
+          </Key>
+          <Property Name="intRoleAccessID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="intRoleID" Type="Int32" Nullable="false" />
+          <Property Name="intModuleID" Type="Int32" Nullable="false" />
+          <Property Name="bitEdit" Type="Boolean" />
+          <Property Name="bitView" Type="Boolean" />
+          <Property Name="bitDelete" Type="Boolean" />
+          <Property Name="bitPrint" Type="Boolean" />
+          <Property Name="txtCreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dtmCreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="txtUpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dtmUpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="mModule" Relationship="TemplateWebModel.FK_mRoleAccess_mModule" FromRole="mRoleAccess" ToRole="mModule" />
+          <NavigationProperty Name="mRole" Relationship="TemplateWebModel.FK_mRoleAccess_mRole" FromRole="mRoleAccess" ToRole="mRole" />
+        </EntityType>
+        <EntityType Name="mUser">
+          <Key>
+            <PropertyRef Name="intUserID" />
+          </Key>
+          <Property Name="intUserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="txtUserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="txtName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="intCompanyID" Type="Int32" Nullable="false" />
+          <Property Name="txtAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="txtPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="txtEmail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bitActive" Type="Boolean" />
+          <Property Name="txtPassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="txtGUID" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="txtCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dtmCreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="txtUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dtmUpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="mUserRoles" Relationship="TemplateWebModel.FK_mUserRole_mUser" FromRole="mUser" ToRole="mUserRole" />
+        </EntityType>
+        <EntityType Name="mUserLog">
+          <Key>
+            <PropertyRef Name="intUserLogID" />
+          </Key>
+          <Property Name="intUserLogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="intUserID" Type="Int32" Nullable="false" />
+          <Property Name="txtUrl" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="dtmLog" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="mUserRecord">
+          <Key>
+            <PropertyRef Name="intUserRecordID" />
+          </Key>
+          <Property Name="intUserRecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="intUserID" Type="Int32" Nullable="false" />
+          <Property Name="dtmLastLogin" Type="DateTime" Precision="3" />
+          <Property Name="intWrongPassCount" Type="Int32" />
+          <Property Name="dtmLastWrongPass" Type="DateTime" Precision="3" />
+          <Property Name="bitLock" Type="Boolean" />
+          <Property Name="txtPreviousPass1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="txtPreviousPass2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="txtPreviousPass3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="mUserRole">
+          <Key>
+            <PropertyRef Name="intUserRoleID" />
+          </Key>
+          <Property Name="intUserRoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="intRoleID" Type="Int32" Nullable="false" />
+          <Property Name="intUserID" Type="Int32" Nullable="false" />
+          <Property Name="txtCreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dtmCreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="txtUpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dtmUpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="mRole" Relationship="TemplateWebModel.FK_mUserRole_mRole" FromRole="mUserRole" ToRole="mRole" />
+          <NavigationProperty Name="mUser" Relationship="TemplateWebModel.FK_mUserRole_mUser" FromRole="mUserRole" ToRole="mUser" />
+        </EntityType>
+        <Association Name="FK_mRoleAccess_mModule">
+          <End Type="TemplateWebModel.mModule" Role="mModule" Multiplicity="1" />
+          <End Type="TemplateWebModel.mRoleAccess" Role="mRoleAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mModule">
+              <PropertyRef Name="intModuleID" />
+            </Principal>
+            <Dependent Role="mRoleAccess">
+              <PropertyRef Name="intModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mRoleAccess_mRole">
+          <End Type="TemplateWebModel.mRole" Role="mRole" Multiplicity="1" />
+          <End Type="TemplateWebModel.mRoleAccess" Role="mRoleAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mRole">
+              <PropertyRef Name="intRoleID" />
+            </Principal>
+            <Dependent Role="mRoleAccess">
+              <PropertyRef Name="intRoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mUserRole_mRole">
+          <End Type="TemplateWebModel.mRole" Role="mRole" Multiplicity="1" />
+          <End Type="TemplateWebModel.mUserRole" Role="mUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mRole">
+              <PropertyRef Name="intRoleID" />
+            </Principal>
+            <Dependent Role="mUserRole">
+              <PropertyRef Name="intRoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mUserRole_mUser">
+          <End Type="TemplateWebModel.mUser" Role="mUser" Multiplicity="1" />
+          <End Type="TemplateWebModel.mUserRole" Role="mUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mUser">
+              <PropertyRef Name="intUserID" />
+            </Principal>
+            <Dependent Role="mUserRole">
+              <PropertyRef Name="intUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TemplateWebModelStoreContainer" CdmEntityContainer="DBEntities">
+          <EntitySetMapping Name="mBidangUsahas">
+            <EntityTypeMapping TypeName="TemplateWebModel.mBidangUsaha">
+              <MappingFragment StoreEntitySet="mBidangUsaha">
+                <ScalarProperty Name="dtmUpdatedDate" ColumnName="dtmUpdatedDate" />
+                <ScalarProperty Name="txtUpdatedBy" ColumnName="txtUpdatedBy" />
+                <ScalarProperty Name="dtmCreatedDate" ColumnName="dtmCreatedDate" />
+                <ScalarProperty Name="txtCreatedBy" ColumnName="txtCreatedBy" />
+                <ScalarProperty Name="txtGUID" ColumnName="txtGUID" />
+                <ScalarProperty Name="txtBidangUsaha" ColumnName="txtBidangUsaha" />
+                <ScalarProperty Name="intBidangUsahaID" ColumnName="intBidangUsahaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mCompanies">
+            <EntityTypeMapping TypeName="TemplateWebModel.mCompany">
+              <MappingFragment StoreEntitySet="mCompany">
+                <ScalarProperty Name="dtmUpdatedDate" ColumnName="dtmUpdatedDate" />
+                <ScalarProperty Name="txtUpdatedBy" ColumnName="txtUpdatedBy" />
+                <ScalarProperty Name="dtmCreatedDate" ColumnName="dtmCreatedDate" />
+                <ScalarProperty Name="txtCreatedBy" ColumnName="txtCreatedBy" />
+                <ScalarProperty Name="txtGUID" ColumnName="txtGUID" />
+                <ScalarProperty Name="txtTelephone" ColumnName="txtTelephone" />
+                <ScalarProperty Name="txtAddress" ColumnName="txtAddress" />
+                <ScalarProperty Name="txtBidangUsaha" ColumnName="txtBidangUsaha" />
+                <ScalarProperty Name="txtCompanyName" ColumnName="txtCompanyName" />
+                <ScalarProperty Name="intCompanyID" ColumnName="intCompanyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mMenus">
+            <EntityTypeMapping TypeName="TemplateWebModel.mMenu">
+              <MappingFragment StoreEntitySet="mMenu">
+                <ScalarProperty Name="dtmUpdatedDate" ColumnName="dtmUpdatedDate" />
+                <ScalarProperty Name="txtUpdatedBy" ColumnName="txtUpdatedBy" />
+                <ScalarProperty Name="dtmCreatedDate" ColumnName="dtmCreatedDate" />
+                <ScalarProperty Name="txtCreatedBy" ColumnName="txtCreatedBy" />
+                <ScalarProperty Name="txtGUID" ColumnName="txtGUID" />
+                <ScalarProperty Name="txtIcon" ColumnName="txtIcon" />
+                <ScalarProperty Name="bitMethod" ColumnName="bitMethod" />
+                <ScalarProperty Name="bitActive" ColumnName="bitActive" />
+                <ScalarProperty Name="intOrderID" ColumnName="intOrderID" />
+                <ScalarProperty Name="txtLink" ColumnName="txtLink" />
+                <ScalarProperty Name="intModuleID" ColumnName="intModuleID" />
+                <ScalarProperty Name="txtDescription" ColumnName="txtDescription" />
+                <ScalarProperty Name="txtMenuName" ColumnName="txtMenuName" />
+                <ScalarProperty Name="intParentID" ColumnName="intParentID" />
+                <ScalarProperty Name="intMenuID" ColumnName="intMenuID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mModules">
+            <EntityTypeMapping TypeName="TemplateWebModel.mModule">
+              <MappingFragment StoreEntitySet="mModule">
+                <ScalarProperty Name="dtmUpdatedDate" ColumnName="dtmUpdatedDate" />
+                <ScalarProperty Name="txtUpdatedBy" ColumnName="txtUpdatedBy" />
+                <ScalarProperty Name="dtmCreatedDate" ColumnName="dtmCreatedDate" />
+                <ScalarProperty Name="txtCreatedBy" ColumnName="txtCreatedBy" />
+                <ScalarProperty Name="txtGUID" ColumnName="txtGUID" />
+                <ScalarProperty Name="txtDescription" ColumnName="txtDescription" />
+                <ScalarProperty Name="txtModuleName" ColumnName="txtModuleName" />
+                <ScalarProperty Name="intModuleID" ColumnName="intModuleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mRisikoes">
+            <EntityTypeMapping TypeName="TemplateWebModel.mRisiko">
+              <MappingFragment StoreEntitySet="mRisiko">
+                <ScalarProperty Name="dtmUpdatedDate" ColumnName="dtmUpdatedDate" />
+                <ScalarProperty Name="txtUpdatedBy" ColumnName="txtUpdatedBy" />
+                <ScalarProperty Name="dtmCreatedDate" ColumnName="dtmCreatedDate" />
+                <ScalarProperty Name="txtCreatedBy" ColumnName="txtCreatedBy" />
+                <ScalarProperty Name="txtRisiko" ColumnName="txtRisiko" />
+                <ScalarProperty Name="intRisikoID" ColumnName="intRisikoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mRoles">
+            <EntityTypeMapping TypeName="TemplateWebModel.mRole">
+              <MappingFragment StoreEntitySet="mRole">
+                <ScalarProperty Name="dtmUpdatedDate" ColumnName="dtmUpdatedDate" />
+                <ScalarProperty Name="txtUpdatedBy" ColumnName="txtUpdatedBy" />
+                <ScalarProperty Name="dtmCreatedDate" ColumnName="dtmCreatedDate" />
+                <ScalarProperty Name="txtCreatedBy" ColumnName="txtCreatedBy" />
+                <ScalarProperty Name="txtGUID" ColumnName="txtGUID" />
+                <ScalarProperty Name="txtRoleName" ColumnName="txtRoleName" />
+                <ScalarProperty Name="intRoleID" ColumnName="intRoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mRoleAccesses">
+            <EntityTypeMapping TypeName="TemplateWebModel.mRoleAccess">
+              <MappingFragment StoreEntitySet="mRoleAccess">
+                <ScalarProperty Name="dtmUpdatedDate" ColumnName="dtmUpdatedDate" />
+                <ScalarProperty Name="txtUpdatedBy" ColumnName="txtUpdatedBy" />
+                <ScalarProperty Name="dtmCreatedDate" ColumnName="dtmCreatedDate" />
+                <ScalarProperty Name="txtCreatedBy" ColumnName="txtCreatedBy" />
+                <ScalarProperty Name="bitPrint" ColumnName="bitPrint" />
+                <ScalarProperty Name="bitDelete" ColumnName="bitDelete" />
+                <ScalarProperty Name="bitView" ColumnName="bitView" />
+                <ScalarProperty Name="bitEdit" ColumnName="bitEdit" />
+                <ScalarProperty Name="intModuleID" ColumnName="intModuleID" />
+                <ScalarProperty Name="intRoleID" ColumnName="intRoleID" />
+                <ScalarProperty Name="intRoleAccessID" ColumnName="intRoleAccessID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mUsers">
+            <EntityTypeMapping TypeName="TemplateWebModel.mUser">
+              <MappingFragment StoreEntitySet="mUser">
+                <ScalarProperty Name="dtmUpdatedDate" ColumnName="dtmUpdatedDate" />
+                <ScalarProperty Name="txtUpdatedBy" ColumnName="txtUpdatedBy" />
+                <ScalarProperty Name="dtmCreatedDate" ColumnName="dtmCreatedDate" />
+                <ScalarProperty Name="txtCreatedBy" ColumnName="txtCreatedBy" />
+                <ScalarProperty Name="txtGUID" ColumnName="txtGUID" />
+                <ScalarProperty Name="txtPassword" ColumnName="txtPassword" />
+                <ScalarProperty Name="bitActive" ColumnName="bitActive" />
+                <ScalarProperty Name="txtEmail" ColumnName="txtEmail" />
+                <ScalarProperty Name="txtPhoneNumber" ColumnName="txtPhoneNumber" />
+                <ScalarProperty Name="txtAddress" ColumnName="txtAddress" />
+                <ScalarProperty Name="intCompanyID" ColumnName="intCompanyID" />
+                <ScalarProperty Name="txtName" ColumnName="txtName" />
+                <ScalarProperty Name="txtUserName" ColumnName="txtUserName" />
+                <ScalarProperty Name="intUserID" ColumnName="intUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mUserLogs">
+            <EntityTypeMapping TypeName="TemplateWebModel.mUserLog">
+              <MappingFragment StoreEntitySet="mUserLog">
+                <ScalarProperty Name="dtmLog" ColumnName="dtmLog" />
+                <ScalarProperty Name="txtUrl" ColumnName="txtUrl" />
+                <ScalarProperty Name="intUserID" ColumnName="intUserID" />
+                <ScalarProperty Name="intUserLogID" ColumnName="intUserLogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mUserRecords">
+            <EntityTypeMapping TypeName="TemplateWebModel.mUserRecord">
+              <MappingFragment StoreEntitySet="mUserRecord">
+                <ScalarProperty Name="txtPreviousPass3" ColumnName="txtPreviousPass3" />
+                <ScalarProperty Name="txtPreviousPass2" ColumnName="txtPreviousPass2" />
+                <ScalarProperty Name="txtPreviousPass1" ColumnName="txtPreviousPass1" />
+                <ScalarProperty Name="bitLock" ColumnName="bitLock" />
+                <ScalarProperty Name="dtmLastWrongPass" ColumnName="dtmLastWrongPass" />
+                <ScalarProperty Name="intWrongPassCount" ColumnName="intWrongPassCount" />
+                <ScalarProperty Name="dtmLastLogin" ColumnName="dtmLastLogin" />
+                <ScalarProperty Name="intUserID" ColumnName="intUserID" />
+                <ScalarProperty Name="intUserRecordID" ColumnName="intUserRecordID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mUserRoles">
+            <EntityTypeMapping TypeName="TemplateWebModel.mUserRole">
+              <MappingFragment StoreEntitySet="mUserRole">
+                <ScalarProperty Name="dtmUpdatedDate" ColumnName="dtmUpdatedDate" />
+                <ScalarProperty Name="txtUpdatedBy" ColumnName="txtUpdatedBy" />
+                <ScalarProperty Name="dtmCreatedDate" ColumnName="dtmCreatedDate" />
+                <ScalarProperty Name="txtCreatedBy" ColumnName="txtCreatedBy" />
+                <ScalarProperty Name="intUserID" ColumnName="intUserID" />
+                <ScalarProperty Name="intRoleID" ColumnName="intRoleID" />
+                <ScalarProperty Name="intUserRoleID" ColumnName="intUserRoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

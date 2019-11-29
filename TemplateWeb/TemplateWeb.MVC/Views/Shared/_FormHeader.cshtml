@@ -1,0 +1,72 @@
+﻿@model IEnumerable<TemplateWeb.Common.DailySalesModel>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+<div class="col-xs-12 col-md-12 form-control" style="height:inherit">
+    <div class="form-group" style="height:inherit">
+        <h4><strong>Project Dashboard </strong>: @ViewBag.Title</h4>
+    </div>
+    <div class="form-control" style="height:inherit">
+        <div class="form-group">
+            <h5>
+                <strong>
+                    Period &nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;
+                </strong>
+                Year &nbsp;
+                <select id="year" class="btn btn-default">
+                    @{
+                        for (int i = DateTime.Now.Year; i >= 2014; i--)
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    }
+                </select> &nbsp;
+                Month &nbsp;
+                <select id="month" class="btn btn-default">
+                    @{
+                        for (int j = 1; j <= 12; j++)
+                        {
+                            <option value="@j"> @j </option>
+                        }
+                    }
+                </select> &nbsp;&nbsp;
+                <strong>Subdist ID &nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;</strong>
+                <select id="multiselected" multiple="multiple" class="btn btn-default" data-toggle="dropdown" style="display:none">
+                    @foreach (var item in Model)
+                    {
+                        <option value="@item.SubdistID"> @Html.DisplayFor(m => item.SubdistID) - @Html.DisplayFor(m => item.SubdistName) &nbsp;</option>
+                    }
+                </select>&emsp;&emsp;
+                <button id="view" type="button" class="btn btn-view btn-success btn-sm" onclick="disable()"><b>VIEW</b></button>&emsp;
+                <button type="button" class="btn btn-reset btn-primary btn-sm" onclick="enable()"><b>RESET</b></button>&emsp;
+                <button id="export" type="button" class="btn btn-export btn-danger btn-sm" title="Export To Excel"><span class="glyphicon glyphicon-export"></span><b>EXCEL</b></button>
+            </h5>
+        </div>
+    </div>
+    <div id="ListHasil" class="" style="height:inherit">
+    </div>
+</div>
+
+<div id="loading" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <button type="button" class="close" data-dismiss="modal" hidden id="btnCloses">&times;</button>
+        <div id="spinner" class="spinner">
+            <img src="~/Content/img/loading.gif" width="200" height="300" />
+        </div>
+    </div>
+</div>
+
+<style type="text/css">
+    .spinner {
+        position: fixed;
+        left: 200px;
+        top: 150px;
+        width: 150px;
+        height: 100px;
+        z-index: 9999;
+    }
+</style>
+
+@Styles.Render("~/Script/Multiselect")
+@Styles.Render("~/Content/DataTable")
+
+

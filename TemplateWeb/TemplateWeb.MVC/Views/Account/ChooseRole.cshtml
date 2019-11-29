@@ -1,0 +1,80 @@
+﻿@model TemplateWeb.MVC.Models.LoginModel
+@using System.Collections.Generic;
+
+@{
+    ViewBag.Title = "Choose Role";
+}
+@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+
+@using (Html.BeginForm("ChooseRole", "Account", new { @returnUrl = Request.QueryString["returnUrl"] }, FormMethod.Post, new { id = "FormLogin", autocomplete = "off" }))
+{
+    <fieldset>
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @if (@ViewBag.Message != null)
+        {
+            <div style="border: 1px solid red">
+                @ViewBag.Message
+            </div>
+        } 
+        <h5 class="center">Choose Role</h5> 
+        <div class="form-group has-feedback">
+            @Html.DropDownListFor(a => a.txtRole, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }) 
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>        
+        @Html.ValidationMessageFor(a => a.txtRole, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-xs-8">
+                <div class="checkbox icheck">
+                    <label>
+                    </label>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                @*<button onclick="return(validate());" id="btn-login" type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>*@
+                <button id="btn-login" type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+            </div>
+        </div>
+
+    </fieldset>
+}
+ 
+
+@section scripts{
+
+    <script src="~/Scripts/customs/globalScript.js"></script>
+    <script src="~/Scripts/customs/admins/loginScript.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $.blockUI({
+            css: {
+                border: 'none',
+                padding: '15px',
+                backgroundColor: '#ccc',
+                '-webkit-border-radius': '10px',
+                '-moz-border-radius': '10px',
+                opacity: .3,
+                color: '#fff'
+            }
+        });
+        $.ajax({
+            type: "POST",
+            url: "/TemplateWeb/Account/PopulateRole",
+            data: { txtUserName: '@ViewBag.txtUserName', __RequestVerificationToken: $('#FormLogin input[name=__RequestVerificationToken]').val() },
+            datatype: "json",
+            success: function (itemList) {
+                $('#txtRole').empty();
+                $.each(itemList, function (i, data) {
+                    $('#txtRole').append($('<option>').text(data.txtRoleName).attr('value', data.intRoleID));
+                });
+                $.unblockUI();
+            }
+        });
+    });
+</script>
+
+}

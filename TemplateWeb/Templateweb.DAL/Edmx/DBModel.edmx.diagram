@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ac76fb7f7af94844a83cde0f2e7dcb07" Name="Diagram1">
+        <EntityTypeShape EntityType="TemplateWebModel.mBidangUsaha" Width="1.5" PointX="2.75" PointY="9.25" />
+        <EntityTypeShape EntityType="TemplateWebModel.mCompany" Width="1.5" PointX="4.75" PointY="9.25" />
+        <EntityTypeShape EntityType="TemplateWebModel.mMenu" Width="1.5" PointX="6.75" PointY="9.25" />
+        <EntityTypeShape EntityType="TemplateWebModel.mModule" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TemplateWebModel.mRisiko" Width="1.5" PointX="8.75" PointY="2.25" />
+        <EntityTypeShape EntityType="TemplateWebModel.mRole" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="TemplateWebModel.mRoleAccess" Width="1.5" PointX="6" PointY="4.375" />
+        <EntityTypeShape EntityType="TemplateWebModel.mUser" Width="1.5" PointX="0.75" PointY="10.125" />
+        <EntityTypeShape EntityType="TemplateWebModel.mUserLog" Width="1.5" PointX="0.75" PointY="2.25" />
+        <EntityTypeShape EntityType="TemplateWebModel.mUserRecord" Width="1.5" PointX="8.75" PointY="5.25" />
+        <EntityTypeShape EntityType="TemplateWebModel.mUserRole" Width="1.5" PointX="3" PointY="4.75" />
+        <AssociationConnector Association="TemplateWebModel.FK_mRoleAccess_mModule" />
+        <AssociationConnector Association="TemplateWebModel.FK_mRoleAccess_mRole" />
+        <AssociationConnector Association="TemplateWebModel.FK_mUserRole_mRole" />
+        <AssociationConnector Association="TemplateWebModel.FK_mUserRole_mUser" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

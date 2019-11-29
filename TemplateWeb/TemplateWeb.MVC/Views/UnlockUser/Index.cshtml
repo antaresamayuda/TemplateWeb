@@ -1,0 +1,112 @@
+﻿@model IEnumerable<TemplateWeb.Common.Entity.mUser>
+@using TemplateWeb.Common
+
+@{
+    ViewBag.Title = "List Locked User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Index", "UnlockUser", FormMethod.Post, new { id = "frmUnlockUser" }))
+{
+    <section class="content-header">
+        <h1>
+            @ViewBag.Title
+        </h1>
+    </section>
+
+    <section class="content">
+        <div class="row">
+            <div class="box box-default">
+                <div class="box-header with-border style="height:55px"">
+                </div>
+                <form role="form">
+                    <div class="box-body">
+                        <div class="col-md-12">
+                            <div class="block">
+                                <div class="block-content np">
+                                    <table id="tblUser" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    No.
+                                                </th>
+                                                <th>
+                                                    Nama Lengkap
+                                                </th>
+                                                <th>
+                                                    Nama Company
+                                                </th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{ int index = 1; }
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @index
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.txtName)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.txtCompanyName)
+                                                    </td>
+                                                    <td>
+                                                        <a href="@("../UnlockUser/UnlockUser/" + clsRijndael.EncryptToHTTPEncode(item.intUserID.ToString()))" class="btn btn-danger btn-xs">Unlock</a>
+                                                    </td>
+                                                </tr>
+
+                                                index = index + 1;
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-footer">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    @section scripts
+    {
+        <script src="~/Scripts/customs/globalScript.js"></script>
+
+        <script type="text/javascript">
+            var clsGlobal = new clsGlobalClass();
+
+            $(document).ready(function () {
+                $("#tblUser").DataTable({
+                    "order": [],
+                    "bAutoWidth": false,
+                    "columnDefs": [
+                        {
+                            className: "text-center",
+                            "width": "40px",
+                            aTargets: [0],
+                            orderable: false,
+                        },
+                        {
+                            className: "text-center",
+                            "width": "200px",
+                            aTargets: [3],
+                            orderable: false,
+                        },
+                    ]
+                });
+
+            });
+
+        </script>
+    }
+}
+
+

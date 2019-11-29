@@ -1,0 +1,148 @@
+﻿@model TemplateWeb.Common.ViewModels.mRoleVW
+
+@{
+    ViewBag.Title = "Create Role";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Create", "Role", FormMethod.Post, new { id = "frmRole" }))
+{
+    @Html.AntiForgeryToken()
+
+    <section class="content-header">
+        <h1>
+            @ViewBag.Title
+        </h1>
+    </section>
+
+    <section class="content">
+        <div class="row">
+            <div class="box box-default">
+                <div class="box-header with-border text-right">
+                    <a href="@Url.Action("/Index")" class="btn btn-default"><i class="fa fa-arrow-left"></i> Back</a>
+                    <button type="submit" name="btn" value="Save" class="btn btn-success"><i class="fa fa-floppy-o"></i> Save</button>
+                </div>
+                <form role="form">
+                    <div class="box-body">
+                        @Html.HiddenFor(model => model.txtGUID)
+                        <div class="form-group">
+                            <label id="lblRoleName" class="col-sm-2 control-label">Role Name</label>
+                            <div class="col-md-10" style="padding-bottom:10px">
+                                @Html.EditorFor(model => model.txtRoleName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.txtRoleName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>                       
+                    </div>
+
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label id="lblRoleAccess" class="col-sm-2 control-label">Role Access</label>
+                            <div class="col-md-10" style="padding-bottom:10px">
+                               @{ int i = 0; }
+                            @foreach (var item in Model.mMenu)
+                            {
+                                if (item.bitParent1 == true)
+                                {
+                                    <div class="col-md-10" style="padding-bottom:10px">
+                                        @Html.CheckBoxFor(model => model.mMenu[i].bitChecklist, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.DisplayFor(model => model.mMenu[i].txtMenuName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.HiddenFor(model => model.mMenu[i].intMenuID)
+                                        @Html.HiddenFor(model => model.mMenu[i].intParentID)
+                                        @Html.HiddenFor(model => model.mMenu[i].intMenuID)
+                                        @Html.HiddenFor(model => model.mMenu[i].txtMenuName)
+                                        @Html.HiddenFor(model => model.mMenu[i].txtDescription)
+                                        @Html.HiddenFor(model => model.mMenu[i].intModuleID)
+                                        @Html.HiddenFor(model => model.mMenu[i].txtLink)
+                                        @Html.HiddenFor(model => model.mMenu[i].intOrderID)
+                                        @Html.HiddenFor(model => model.mMenu[i].bitActive)
+                                        @Html.HiddenFor(model => model.mMenu[i].bitParent1)
+                                    </div>
+                                }
+
+                                if (item.bitParent2 == true)
+                                {
+                                    <div class="col-md-10" style="padding-bottom:10px; padding-left:40px">
+                                        @Html.CheckBoxFor(model => model.mMenu[i].bitChecklist, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.DisplayFor(model => model.mMenu[i].txtMenuName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.HiddenFor(model => model.mMenu[i].intMenuID)
+                                        @Html.HiddenFor(model => model.mMenu[i].intParentID)
+                                        @Html.HiddenFor(model => model.mMenu[i].intMenuID)
+                                        @Html.HiddenFor(model => model.mMenu[i].txtMenuName)
+                                        @Html.HiddenFor(model => model.mMenu[i].txtDescription)
+                                        @Html.HiddenFor(model => model.mMenu[i].intModuleID)
+                                        @Html.HiddenFor(model => model.mMenu[i].txtLink)
+                                        @Html.HiddenFor(model => model.mMenu[i].intOrderID)
+                                        @Html.HiddenFor(model => model.mMenu[i].bitActive)
+                                        @Html.HiddenFor(model => model.mMenu[i].bitParent2)
+                                    </div>
+                                }
+
+                                if (item.bitParent3 == true)
+                                {
+                                    <div class="col-md-10" style="padding-bottom:10px;padding-left:80px">
+                                        @Html.CheckBoxFor(model => model.mMenu[i].bitChecklist, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.DisplayFor(model => model.mMenu[i].txtMenuName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.HiddenFor(model => model.mMenu[i].intMenuID)
+                                        @Html.HiddenFor(model => model.mMenu[i].intParentID)
+                                        @Html.HiddenFor(model => model.mMenu[i].intMenuID)
+                                        @Html.HiddenFor(model => model.mMenu[i].txtMenuName)
+                                        @Html.HiddenFor(model => model.mMenu[i].txtDescription)
+                                        @Html.HiddenFor(model => model.mMenu[i].intModuleID)
+                                        @Html.HiddenFor(model => model.mMenu[i].txtLink)
+                                        @Html.HiddenFor(model => model.mMenu[i].intOrderID)
+                                        @Html.HiddenFor(model => model.mMenu[i].bitActive)
+                                        @Html.HiddenFor(model => model.mMenu[i].bitParent3)
+                                    </div>
+                                }
+
+                                if (item.bitParent4 == true)
+                                {
+                                    <div class="col-md-10" style="padding-bottom:10px;padding-left:120px">
+                                        @Html.CheckBoxFor(model => model.mMenu[i].bitChecklist, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.DisplayFor(model => model.mMenu[i].txtMenuName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.HiddenFor(model => model.mMenu[i].intMenuID)
+                                        @Html.HiddenFor(model => model.mMenu[i].intParentID)
+                                        @Html.HiddenFor(model => model.mMenu[i].intMenuID)
+                                        @Html.HiddenFor(model => model.mMenu[i].txtMenuName)
+                                        @Html.HiddenFor(model => model.mMenu[i].txtDescription)
+                                        @Html.HiddenFor(model => model.mMenu[i].intModuleID)
+                                        @Html.HiddenFor(model => model.mMenu[i].txtLink)
+                                        @Html.HiddenFor(model => model.mMenu[i].intOrderID)
+                                        @Html.HiddenFor(model => model.mMenu[i].bitActive)
+                                        @Html.HiddenFor(model => model.mMenu[i].bitParent4)
+                                    </div>
+                                }
+
+                                i = i + 1;
+                            }
+                            </div>
+                            
+                        </div>                      
+                    </div>
+
+                    <div class="box-footer">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    @section scripts
+    {
+        <script src="~/Scripts/customs/globalScript.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+            });
+        </script>
+    }
+}
+
+
+
+
+
+
